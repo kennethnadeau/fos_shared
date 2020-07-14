@@ -5,6 +5,7 @@ stages:
 build:
   stage: 'build'
   before_script:
+    - 'export PATH="/home/ubuntu/.yarn/bin:/home/ubuntu/.config/yarn/global/node_modules/.bin:$PATH"'
     - 'echo $PATH'
     - 'npm --version'
     - 'yarn --version'
