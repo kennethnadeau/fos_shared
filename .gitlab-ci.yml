@@ -1,11 +1,32 @@
 stages:
   - 'test'
+  - 'deploy'
+
+cache:
+  key: ${CI_COMMIT_REF_SLUG}
+  paths:
+    - 'node_modules/'
 
 test:
   stage: 'test'
   before_script:
-    - 'export PATH="/home/ubuntu/.nvm/versions/node/v12.18.2/bin:$PATH"'
     - 'npm --version'
+    - 'yarn --version'    
   script:
-    - 'npm install'
-    - 'npm test'
+    - 'yarn install'
+    - 'yarn test --coverage'
+    - 'yarn lint'
+
+deploy:
+  stage: 'deploy'
+  before_script:
+    - 'npm config set registry https://packagecloud.io/flatsorspikes/frontend/npm/'
+    - 'echo "always-auth=true" > $HOME/.npmrc'
+    - 'echo "registry=https://packagecloud.io/flatsorspikes/frontend/npm/" >> $HOME/.npmrc'
+    - 'echo "//packagecloud.io/flatsorspikes/frontend/npm/:_authToken=$PACKAGECLOUD_API_TOKEN" >> $HOME/.npmrc'    
+  script:
+    - 'yarn build'
+    - 'yarn pack'
+    - 'npm publish fos-shared-*.tgz'
+  only:
+    - 'master'

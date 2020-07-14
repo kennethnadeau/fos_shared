@@ -23,3 +23,6 @@ yarn-debug.log*
 yarn-error.log*
 
 dist/
+
+# yarn pack output
+*.tgz
