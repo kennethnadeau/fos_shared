@@ -3,5 +3,7 @@ stages:
 
 test:
   stage: 'test'
+  before_script:
+    - 'npm --version'
   script:
     - 'npm test'
