@@ -5,6 +5,7 @@ stages:
 build:
   stage: 'build'
   before_script:
+    - 'echo $PATH'
     - 'npm --version'
     - 'yarn --version'
   script:
