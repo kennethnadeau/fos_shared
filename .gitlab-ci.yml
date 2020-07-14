@@ -1,0 +1,11 @@
+stages:
+  - 'test'
+
+test:
+  stage: 'test'
+  before_script:
+    - 'export PATH="/home/ubuntu/.nvm/versions/node/v12.18.2/bin:$PATH"'
+    - 'npm --version'
+  script:
+    - 'npm install'
+    - 'npm test'
