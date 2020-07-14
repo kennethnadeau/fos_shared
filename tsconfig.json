@@ -18,7 +18,6 @@
     "isolatedModules": true,
     "noEmit": false,
     "declaration": true,
-    "jsx": "react",
     "outDir": "dist"
   },
   "include": [
