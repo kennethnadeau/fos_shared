@@ -1,7 +1,7 @@
 {
   "name": "@fos/shared",
   "version": "0.1.0",
-  "private": true,
+  "private": false,
   "dependencies": {
     "typescript": "3.9.6"
   },
