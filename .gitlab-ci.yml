@@ -1,0 +1,39 @@
+stages:
+  - 'test'
+  - 'deploy'
+
+test:
+  stage: 'test'
+  script:
+  - 'docker-compose exec -T web python manage.py test --noinput'
+  variables:
+    DJANGO_SETTINGS_MODULE: 'fos.settings.docker'
+
+staging:
+  stage: 'deploy'
+  # before_script:
+  #  - 'docker login --username=_ --password=$HEROKU_API_KEY registry.heroku.com'
+  script:
+    - 'npm test'
+  # - 'docker tag api_web registry.heroku.com/fos-api-staging/web'
+  # - 'docker push registry.heroku.com/fos-api-staging/web'
+  # - 'curl -s -n -X PATCH https://api.heroku.com/apps/fos-api-staging/formation -d "{\"updates\": [{\"type\": \"web\", \"docker_image\": \"$(docker inspect registry.heroku.com/fos-api-staging/web --format="{{index .Id}}")\"}]}" -H "Content-Type: application/json" -H "Accept: application/vnd.heroku+json; version=3.docker-releases" -H "Authorization: Bearer $HEROKU_API_KEY"'
+  # environment:
+  #   name: 'staging'
+  #   url: 'https://fos-api-staging.herokuapp.com'
+  only:
+  - 'develop'
+
+production:
+  stage: 'deploy'
+  # before_script:
+  #  - 'docker login --username=_ --password=$HEROKU_API_KEY registry.heroku.com'
+  script:
+  # - 'docker tag api_web registry.heroku.com/fos-api-production/web'
+  # - 'docker push registry.heroku.com/fos-api-production/web'
+  # - 'curl -s -n -X PATCH https://api.heroku.com/apps/fos-api-production/formation -d "{\"updates\": [{\"type\": \"web\", \"docker_image\": \"$(docker inspect registry.heroku.com/fos-api-production/web --format="{{index .Id}}")\"}]}" -H "Content-Type: application/json" -H "Accept: application/vnd.heroku+json; version=3.docker-releases" -H "Authorization: Bearer $HEROKU_API_KEY"'
+  # environment:
+  #   name: 'production'
+  #   url: 'https://fos-api-production.herokuapp.com'
+  only:
+  - 'master'
