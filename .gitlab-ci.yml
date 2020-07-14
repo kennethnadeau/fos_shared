@@ -1,9 +1,16 @@
 stages:
+  - 'build'
   - 'test'
+
+build:
+  stage: 'build'
+  before_script:
+    - 'npm --version'
+    - 'yarn --version'
+  script:
+    - 'yarn'
 
 test:
   stage: 'test'
-  before_script:
-    - 'npm --version'
   script:
     - 'npm test'
