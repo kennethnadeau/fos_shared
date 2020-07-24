@@ -1,0 +1,12 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`auth/service should return all required services 1`] = `
+Object {
+  "postAccountRegistration": [Function],
+  "postLogout": [Function],
+  "postOtpAuthenticate": [Function],
+  "postOtpAuthenticateVerify": [Function],
+  "postOtpRegistration": [Function],
+  "postOtpRegistrationVerify": [Function],
+}
+`;

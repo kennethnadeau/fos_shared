@@ -1,8 +1,10 @@
 {
   "name": "@fos/shared",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "private": false,
   "dependencies": {
+    "axios": "^0.19.2",
+    "snakecase-keys": "^3.2.0",
     "typescript": "3.9.6"
   },
   "main": "dist",
@@ -28,6 +30,7 @@
   "devDependencies": {
     "@commitlint/cli": "^9.1.1",
     "@commitlint/config-conventional": "^9.1.1",
+    "@types/axios": "^0.14.0",
     "@types/jest": "^26.0.4",
     "@types/node": "^12.0.0",
     "@typescript-eslint/eslint-plugin": "^3.6.1",
@@ -42,6 +45,7 @@
     "eslint-plugin-standard": "^4.0.1",
     "husky": "^4.2.5",
     "jest": "^26.1.0",
+    "jest-mock-axios": "^4.2.1",
     "lint-staged": ">=10",
     "ts-jest": "^26.1.2"
   },
