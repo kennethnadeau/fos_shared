@@ -9,10 +9,15 @@ export interface OtpVerificationRequest {
     code: string
 }
 
-// Response Types
-export interface OtpResponse {
-    code: string
+export interface AccountRegistrationRequest {
+    phone: string,
+    firstName: string,
+    lastName: string,
+    email: string,
+    registrationUuid: string
 }
+
+// Response Types
 
 export interface OtpVerificationResponse {
     status: string
