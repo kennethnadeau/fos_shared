@@ -1,5 +1,7 @@
 import * as posts from './post'
 
-export default {
+const authService = {
   ...posts
 }
+
+export default authService

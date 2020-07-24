@@ -4,6 +4,7 @@
   "private": false,
   "dependencies": {
     "axios": "^0.19.2",
+    "snakecase-keys": "^3.2.0",
     "typescript": "3.9.6"
   },
   "main": "dist",
