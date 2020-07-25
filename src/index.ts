@@ -1,3 +1,4 @@
+export * from './services'
 
 function sayHello () {
   return 'hello'

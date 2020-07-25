@@ -1,5 +1,5 @@
-import * as api from './api'
+import * as apiService from './api'
 
 export {
-  api
+  apiService
 }

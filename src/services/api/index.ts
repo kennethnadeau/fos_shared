@@ -4,4 +4,4 @@ export function configure (baseUrl: string) {
   Axios.defaults.baseURL = baseUrl
 }
 
-export { default as authService } from './auth'
+export * from './auth'
