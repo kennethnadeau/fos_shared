@@ -8,3 +8,4 @@ export const OTP_REGISTRATION_VERIFY = '/otp/registration/verify/'
 export const OTP_LOGOUT = '/otp/logout/'
 
 export const ACCOUNT_REGISTRATION = '/account/register/'
+export const USER_INFO = '/account/user/'

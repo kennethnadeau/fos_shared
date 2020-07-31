@@ -2,6 +2,7 @@
 
 exports[`auth/service should return all required services 1`] = `
 Object {
+  "getUserInfo": [Function],
   "postAccountRegistration": [Function],
   "postLogout": [Function],
   "postOtpAuthenticate": [Function],
