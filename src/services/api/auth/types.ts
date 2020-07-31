@@ -5,20 +5,36 @@ export interface OtpRequest {
 }
 
 export interface OtpVerificationRequest {
-    phone: string,
+    phone: string
     code: string
 }
 
 export interface AccountRegistrationRequest {
-    phone: string,
-    firstName: string,
-    lastName: string,
-    email: string,
+    phone: string
+    firstName: string
+    lastName: string
+    email: string
     registrationUuid: string
 }
 
 // Response Types
 
-export interface OtpVerificationResponse {
-    status: string
+export interface OtpRegVerificationResponse {
+    uuid: string
+}
+
+export interface OtpAuthVerificationResponse {
+    token: string
+}
+
+export interface UserInfoResponse {
+    id: string
+    firstName: string
+    lastName: string
+    email: string
+    dateJoined: string
+    phone: string
+    photo: string | null
+    nickname: string | null
+    dateOfBirth: string | null
 }

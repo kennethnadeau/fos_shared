@@ -1,7 +1,9 @@
 import * as posts from './post'
+import * as get from './get'
 
 const auth = {
-  ...posts
+  ...posts,
+  ...get
 }
 
 export { auth }
