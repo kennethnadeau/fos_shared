@@ -1,4 +1,6 @@
 import Axios from 'axios'
+import snakeCaseKeys from 'snakecase-keys'
+import { handleApiResponse } from '../helpers/handleApiResponse'
 import {
   OtpRequest,
   OtpVerificationRequest,
@@ -13,21 +15,33 @@ import {
   OTP_AUTHENTICATE_VERIFY,
   OTP_LOGOUT, ACCOUNT_REGISTRATION
 } from './routes'
-import snakeCaseKeys from 'snakecase-keys'
 
-export const postOtpRegistration = (data: OtpRequest) =>
-  Axios.post<void>(OTP_REGISTRATION, data)
+export const postOtpRegistration = async (data: OtpRequest) => {
+  const response = await Axios.post<void>(OTP_REGISTRATION, data)
+  return handleApiResponse(response)
+}
 
-export const postOtpRegistrationVerify = (data: OtpVerificationRequest) =>
-  Axios.post<{ data: OtpRegVerificationResponse }>(OTP_REGISTRATION_VERIFY, data)
+export const postOtpRegistrationVerify = async (data: OtpVerificationRequest) => {
+  const response = await Axios.post<{ data: OtpRegVerificationResponse }>(OTP_REGISTRATION_VERIFY, data)
+  return handleApiResponse(response)
+}
 
-export const postOtpAuthenticate = (data: OtpRequest) =>
-  Axios.post<void>(OTP_AUTHENTICATE, data)
+export const postOtpAuthenticate = async (data: OtpRequest) => {
+  const response = await Axios.post<void>(OTP_AUTHENTICATE, data)
+  return handleApiResponse(response)
+}
 
-export const postOtpAuthenticateVerify = (data: OtpVerificationRequest) =>
-  Axios.post<{ data: OtpAuthVerificationResponse }>(OTP_AUTHENTICATE_VERIFY, data)
+export const postOtpAuthenticateVerify = async (data: OtpVerificationRequest) => {
+  const response = await Axios.post<{ data: OtpAuthVerificationResponse }>(OTP_AUTHENTICATE_VERIFY, data)
+  return handleApiResponse(response)
+}
 
-export const postAccountRegistration = (data: AccountRegistrationRequest) =>
-  Axios.post(ACCOUNT_REGISTRATION, snakeCaseKeys(data))
+export const postAccountRegistration = async (data: AccountRegistrationRequest) => {
+  const response = await Axios.post(ACCOUNT_REGISTRATION, snakeCaseKeys(data))
+  return handleApiResponse(response)
+}
 
-export const postLogout = () => Axios.post(OTP_LOGOUT)
+export const postLogout = async () => {
+  const response = await Axios.post(OTP_LOGOUT)
+  return handleApiResponse(response)
+}
