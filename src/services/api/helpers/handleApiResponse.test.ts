@@ -4,8 +4,8 @@ describe('handleApiResponse', () => {
   const responseHeaders = {
     statusText: '',
     headers: {},
-    config: {},
-  };
+    config: {}
+  }
 
   it('should return a valid response with data', () => {
     const response = handleApiResponse({ ...responseHeaders, status: 200, data: { data: 'data' } })
