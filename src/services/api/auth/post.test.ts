@@ -107,4 +107,24 @@ describe('auth/post', () => {
       expect(MockAxios.post).toHaveBeenCalledWith(ACCOUNT_REGISTRATION, snakeCaseKeys(fakePayload))
     })
   })
+
+  describe('errors', () => {
+    it('should return an error for the account registration request', async () => {
+      const fakePayload: AccountRegistrationRequest = {
+        email: '',
+        firstName: '',
+        lastName: '',
+        phone: '',
+        registrationUuid: ''
+      }
+      const promise = postAccountRegistration(fakePayload)
+
+      const responseObj = { data: null, status: 500 }
+      MockAxios.mockResponse(responseObj)
+
+      const result = await promise
+
+      expect(result).toEqual({ error: {} })
+    })
+  })
 })
