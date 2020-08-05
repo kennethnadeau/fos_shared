@@ -1,7 +1,7 @@
-import Axios from 'axios'
+import Axios from "axios";
 
-export function configure (baseUrl: string) {
-  Axios.defaults.baseURL = baseUrl
+export function configure(baseUrl: string) {
+  Axios.defaults.baseURL = baseUrl;
 }
 
-export * from './auth'
+export * from "./auth";
