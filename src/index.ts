@@ -1,6 +1,6 @@
 export * from "./services";
 
-function sayHello () {
+function sayHello() {
   return "hello";
 }
 

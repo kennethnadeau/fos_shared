@@ -29,6 +29,6 @@
         "prefer-object-spread": "error",
         "quotes": [2, "double"],
         "semi": [2, "always"],
-        "space-before-function-paren": ["error", "always"]
+        "space-before-function-paren": ["error", "never"]
     }
 }
