@@ -1,5 +1,5 @@
-import * as apiService from './api'
+import * as apiService from "./api";
 
 export {
   apiService
-}
+};

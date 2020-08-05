@@ -22,6 +22,13 @@
         "jest"
     ],
     "rules": {
-        "@typescript-eslint/explicit-module-boundary-types": "off"
+        "@typescript-eslint/explicit-module-boundary-types": "off",
+        "no-unused-vars": "error",
+        "no-console": "error",
+        "object-curly-spacing": [2, "always"],
+        "prefer-object-spread": "error",
+        "quotes": [2, "double"],
+        "semi": [2, "always"],
+        "space-before-function-paren": ["error", "always"]
     }
 }

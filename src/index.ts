@@ -1,7 +1,7 @@
-export * from './services'
+export * from "./services";
 
 function sayHello () {
-  return 'hello'
+  return "hello";
 }
 
-export default sayHello
+export default sayHello;

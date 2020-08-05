@@ -1,1 +1,1 @@
-export { default } from 'jest-mock-axios'
+export { default } from "jest-mock-axios";
