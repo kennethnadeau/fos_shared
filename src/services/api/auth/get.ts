@@ -11,9 +11,11 @@ export const getUserInfo = async (token: string) => {
       Authorization: `Token ${token}`
     }
   });
-  const data = handleApiResponse(response);
+  const { data } = handleApiResponse(response);
+
+  if (!data) return {};
+
   return {
-    ...data,
     data: camelaseKeys(data)
   };
 };

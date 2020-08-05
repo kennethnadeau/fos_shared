@@ -9,7 +9,7 @@ describe("handleApiResponse", () => {
 
   it("should return a valid response with data", () => {
     const response = handleApiResponse({ ...responseHeaders, status: 200, data: { data: "data" } });
-    expect(response.data).toEqual("data");
+    expect(response.data).toEqual({ data: "data" });
   });
 
   it("should return a response with an error", () => {

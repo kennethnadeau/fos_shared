@@ -18,5 +18,19 @@ describe("auth/get", () => {
         }
       });
     });
+
+    it("should return camelcase", async () => {
+      const promise = getUserInfo(USER_INFO);
+
+      const responseObj = {
+        data: { first_name: "Joy" },
+        status: 200
+      };
+      MockAxios.mockResponse(responseObj);
+
+      const result = await promise;
+
+      expect(result).toEqual({ data: { firstName: "Joy" } });
+    });
   });
 });
