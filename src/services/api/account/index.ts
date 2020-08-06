@@ -1,1 +1,3 @@
-export * as account from "./routes";
+import * as account from "./routes";
+
+export { account };

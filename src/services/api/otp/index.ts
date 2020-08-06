@@ -1,1 +1,3 @@
-export * as otp from "./routes";
+import * as otp from "./routes";
+
+export { otp };
