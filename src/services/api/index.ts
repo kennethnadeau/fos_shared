@@ -5,4 +5,4 @@ export function configure(baseUrl: string) {
 }
 
 export * from "./account";
-export * from "./auth";
+export * from "./otp";

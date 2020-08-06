@@ -8,7 +8,7 @@ describe("apiService exports", () => {
   });
 
   it("should find auth functions", async () => {
-    const { auth } = apiService;
-    expect(auth).toBeDefined();
+    const { otp } = apiService;
+    expect(otp).toBeDefined();
   });
 });
