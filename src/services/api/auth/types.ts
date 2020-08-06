@@ -9,14 +9,6 @@ export interface OtpVerificationRequest {
     code: string
 }
 
-export interface AccountRegistrationRequest {
-    phone: string
-    firstName: string
-    lastName: string
-    email: string
-    registrationUuid: string
-}
-
 // Response Types
 
 export interface OtpRegVerificationResponse {
@@ -25,16 +17,4 @@ export interface OtpRegVerificationResponse {
 
 export interface OtpAuthVerificationResponse {
     token: string
-}
-
-export interface UserInfoResponse {
-    id: string
-    firstName: string
-    lastName: string
-    email: string
-    dateJoined: string
-    phone: string
-    photo: string | null
-    nickname: string | null
-    dateOfBirth: string | null
 }

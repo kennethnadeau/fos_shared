@@ -1,26 +1,17 @@
 import MockAxios from "jest-mock-axios";
-import {
-  ACCOUNT_REGISTRATION,
-  OTP_REGISTRATION,
-  OTP_REGISTRATION_VERIFY,
-  OTP_AUTHENTICATE,
-  OTP_AUTHENTICATE_VERIFY,
-  OTP_LOGOUT
-} from "./routes";
+
+import * as OTP from "./constants";
 import {
   postOtpRegistration,
   postOtpRegistrationVerify,
   postOtpAuthenticate,
   postOtpAuthenticateVerify,
-  postLogout,
-  postAccountRegistration
-} from "./post";
+  postLogout
+} from "./routes";
 import {
-  AccountRegistrationRequest,
   OtpRequest,
   OtpVerificationRequest
 } from "./types";
-import snakeCaseKeys from "snakecase-keys";
 
 describe("auth/post", () => {
   afterEach(() => MockAxios.reset());
@@ -36,7 +27,7 @@ describe("auth/post", () => {
 
         postOtpRegistration(fakeData).then(thenFn).catch(catchFn);
 
-        expect(MockAxios.post).toHaveBeenCalledWith(OTP_REGISTRATION, fakeData);
+        expect(MockAxios.post).toHaveBeenCalledWith(OTP.OTP_REGISTRATION, fakeData);
       });
 
       it("should send OTP verification request", () => {
@@ -49,7 +40,7 @@ describe("auth/post", () => {
 
         postOtpRegistrationVerify(fakeData).then(thenFn).catch(catchFn);
 
-        expect(MockAxios.post).toHaveBeenCalledWith(OTP_REGISTRATION_VERIFY, fakeData);
+        expect(MockAxios.post).toHaveBeenCalledWith(OTP.OTP_REGISTRATION_VERIFY, fakeData);
       });
     });
     describe("authentication", () => {
@@ -62,7 +53,7 @@ describe("auth/post", () => {
 
         postOtpAuthenticate(fakeData).then(thenFn).catch(catchFn);
 
-        expect(MockAxios.post).toHaveBeenCalledWith(OTP_AUTHENTICATE, fakeData);
+        expect(MockAxios.post).toHaveBeenCalledWith(OTP.OTP_AUTHENTICATE, fakeData);
       });
 
       it("should send OTP verification request", () => {
@@ -75,7 +66,7 @@ describe("auth/post", () => {
 
         postOtpAuthenticateVerify(fakeData).then(thenFn).catch(catchFn);
 
-        expect(MockAxios.post).toHaveBeenCalledWith(OTP_AUTHENTICATE_VERIFY, fakeData);
+        expect(MockAxios.post).toHaveBeenCalledWith(OTP.OTP_AUTHENTICATE_VERIFY, fakeData);
       });
     });
 
@@ -85,46 +76,7 @@ describe("auth/post", () => {
 
       postLogout().then(thenFn).catch(catchFn);
 
-      expect(MockAxios.post).toHaveBeenCalledWith(OTP_LOGOUT);
-    });
-  });
-
-  describe("account", () => {
-    it("should send account registration request", () => {
-      const thenFn = jest.fn();
-      const catchFn = jest.fn();
-
-      const fakePayload: AccountRegistrationRequest = {
-        email: "foo@email.com",
-        firstName: "Foo",
-        lastName: "Bar",
-        phone: "123456789",
-        registrationUuid: "someSuperSecureUuid"
-      };
-
-      postAccountRegistration(fakePayload).then(thenFn).catch(catchFn);
-
-      expect(MockAxios.post).toHaveBeenCalledWith(ACCOUNT_REGISTRATION, snakeCaseKeys(fakePayload));
-    });
-  });
-
-  describe("errors", () => {
-    it("should return an error for the account registration request", async () => {
-      const fakePayload: AccountRegistrationRequest = {
-        email: "",
-        firstName: "",
-        lastName: "",
-        phone: "",
-        registrationUuid: ""
-      };
-      const promise = postAccountRegistration(fakePayload);
-
-      const responseObj = { data: null, status: 500 };
-      MockAxios.mockResponse(responseObj);
-
-      const result = await promise;
-
-      expect(result).toEqual({ error: {} });
+      expect(MockAxios.post).toHaveBeenCalledWith(OTP.OTP_LOGOUT);
     });
   });
 });

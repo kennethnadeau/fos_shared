@@ -1,11 +1,35 @@
+import Axios from "axios";
+import { handleApiResponse } from "../helpers/handleApiResponse";
 
-export const OTP_AUTHENTICATE = "/otp/authenticate/";
-export const OTP_AUTHENTICATE_VERIFY = "/otp/authenticate/verify/";
+import * as OTP from "./constants";
+import {
+  OtpRequest,
+  OtpVerificationRequest,
+  OtpRegVerificationResponse,
+  OtpAuthVerificationResponse
+} from "./types";
 
-export const OTP_REGISTRATION = "/otp/registration/";
-export const OTP_REGISTRATION_VERIFY = "/otp/registration/verify/";
+export const postOtpRegistration = async (data: OtpRequest) => {
+  const response = await Axios.post<void>(OTP.OTP_REGISTRATION, data);
+  return handleApiResponse(response);
+};
 
-export const OTP_LOGOUT = "/otp/logout/";
+export const postOtpRegistrationVerify = async (data: OtpVerificationRequest) => {
+  const response = await Axios.post<{ data: OtpRegVerificationResponse }>(OTP.OTP_REGISTRATION_VERIFY, data);
+  return handleApiResponse(response);
+};
 
-export const ACCOUNT_REGISTRATION = "/account/register/";
-export const USER_INFO = "/account/user/";
+export const postOtpAuthenticate = async (data: OtpRequest) => {
+  const response = await Axios.post<void>(OTP.OTP_AUTHENTICATE, data);
+  return handleApiResponse(response);
+};
+
+export const postOtpAuthenticateVerify = async (data: OtpVerificationRequest) => {
+  const response = await Axios.post<{ data: OtpAuthVerificationResponse }>(OTP.OTP_AUTHENTICATE_VERIFY, data);
+  return handleApiResponse(response);
+};
+
+export const postLogout = async () => {
+  const response = await Axios.post(OTP.OTP_LOGOUT);
+  return handleApiResponse(response);
+};
