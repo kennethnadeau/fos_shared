@@ -1,9 +1,10 @@
 import Axios from "axios";
 import camelaseKeys from "camelcase-keys";
+import snakeCaseKeys from "snakecase-keys";
 
 import { handleApiResponse } from "../helpers/handleApiResponse";
-import { USER_INFO } from "./routes";
-import { UserInfoResponse } from "./types";
+import { ACCOUNT_REGISTRATION, USER_INFO } from "./constants";
+import { AccountRegistrationRequest, UserInfoResponse } from "./types";
 
 export const getUserInfo = async (token: string) => {
   const response = await Axios.get<{ data: UserInfoResponse }>(USER_INFO, {
@@ -18,4 +19,9 @@ export const getUserInfo = async (token: string) => {
   return {
     data: camelaseKeys(data)
   };
+};
+
+export const postAccountRegistration = async (data: AccountRegistrationRequest) => {
+  const response = await Axios.post(ACCOUNT_REGISTRATION, snakeCaseKeys(data));
+  return handleApiResponse(response);
 };

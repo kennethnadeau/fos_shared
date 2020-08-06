@@ -1,10 +1,14 @@
-import sayHello from ".";
+import { apiService } from ".";
 
-describe("greeter", () => {
-  it("should say hello", () => {
-    const actual = sayHello();
-    const expected = "hello";
+describe("apiService exports", () => {
+  it("should find account functions", async () => {
+    const { account } = apiService;
+    expect(account).toBeDefined();
+    expect(account.getUserInfo).toBeDefined();
+  });
 
-    expect(actual).toBe(expected);
+  it("should find auth functions", async () => {
+    const { otp } = apiService;
+    expect(otp).toBeDefined();
   });
 });

@@ -4,4 +4,5 @@ export function configure(baseUrl: string) {
   Axios.defaults.baseURL = baseUrl;
 }
 
-export * from "./auth";
+export * from "./account";
+export * from "./otp";
